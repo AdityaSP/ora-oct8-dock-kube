@@ -1,0 +1,138 @@
+    1  id
+    2  docker version
+    3  ping google.com
+    4  docker --help
+    5  docker container ls
+    6  docker container ls | grep -v k8s
+    7  docker container run nginx
+    8  docker container run -d nginx
+    9  docker container ls | grep -v k8s
+   10  docker container ls | grep -v k8s
+   11  docker container ls | grep -v k8s
+   12  docker container inspect d696803b5db0
+   13  ping
+   14  ping 172.17.0.25
+   15  curl --version
+   16  curl 172.17.0.25:80
+   17  docker container run -d -p 9999:80 nginx
+   18  docker container ls | grep -v k8s
+   19  docker container stop wizardly_lewin
+   20  docker container ls | grep -v k8s
+   21  docker container ls -a| grep -v k8s
+   22  docker container start wizardly_lewin
+   23  docker container ls | grep -v k8s
+   24  docker container rm wizardly_lewin
+   25  docker container rm -f wizardly_lewin
+   26  docker container ls | grep -v k8s
+   27  docker container exec -it suspicious_sammet sh
+   28  docker container ls | grep -v k8s
+   29  docker container stop suspicious_sammet
+   30  docker container start suspicious_sammet
+   31  docker container run -d alpine
+   32  docker container ls | grep -v k8s
+   33  docker container ls -a | grep -v k8s 
+   34  #docker container exec -it suspicious_sammet sh
+   35  docker container run -it alpine sh
+   36  docker container run -it alpine sh
+   37  history
+   38  docker container ls
+   39  docker container run -it alpine bash
+   40  docker container run -it alpine sh
+   41  docker container ls -a | grep -v k8s
+   42  docker commit --help
+   43  docker commit 78ea91e72168 alap
+   44  docker container run -d -p 9998:80 --name web01 alap
+   45  docker container ls | grep -v k8s
+   46  docker container ls -a | grep -v k8s
+   47  docker container rm web01
+   48  docker container prune
+   49  docker container run -d -p 9998:80 --name web01 alap httpd -D FOREGROUND
+   50  docker container ls | grep -v k8s
+   51  docker image ls
+   52  docker image ls
+   53  docker image history alpine
+   54  docker image history alap
+   55  docker image ls alap
+   56  docker image ls alpine
+   57  docker image ls nginx
+   58  docker image pull alpine:3.2
+   59  docker image ls alpine
+   60  docker image rm alpine:3.2
+   61  docker image ls alap
+   62  docker image push alap
+   63  docker logout
+   64  docker image push alap
+   65  docker login
+   66  docker image push alap
+   67  docker image tag
+   68  docker image tag alap:latest adityaprabhakara/alap:latest
+   69  docker image ls alap
+   70  docker image ls adityaprabhakara/alap
+   71  docker image push adityaprabhakara/alap:latest
+   72  docker image tag  adityaprabhakara/alap:latest adityaprabhakara/alap:1
+   73  docker image push adityaprabhakara/alap:1
+   74  docker image ls adityaprabhakara/alap
+   75  docker image history nginx
+   76  docker image inspect nginx
+   77  clear
+   78  docker container ls | grep -v k8s
+   79  docker -q
+   80  docker -p
+   81  docker container -q
+   82  docker container -p
+   83* 
+   84  docker container ls | grep -v k8s
+   85  docker container rm -rf web01 c100e
+   86  docker container rm -f web01 c100e
+   87  docker container prune
+   88  docker container run -d --name web01  nginx:alpine 
+   89  docker container run -d --name web02  nginx:alpine 
+   90  docker container inspect web01 | grep -i ipaddress
+   91  docker container inspect web02 | grep -i ipaddress
+   92  docker container exec web01 ping web02
+   93  docker container exec web01 ping 172.17.0.26
+   94  docker container inspect web01
+   95  ifconfig
+   96  docker container inspect web02 | grep -i ipaddress
+   97  docker container inspect web01 | grep -i ipaddress
+   98  docker network ls
+   99  docker network rm -f 8fca2f5aedfe bd905be7d6b9
+  100  docker network rm  8fca2f5aedfe bd905be7d6b9
+  101  docker network ls
+  102  docker network ls
+  103  docker network inspect bridge
+  104  docker network create netone
+  105  docker network ls
+  106  docker network inspect netone 
+  107  docker network connect netone web01
+  108  docker container inspect web01 | grep -i ipaddress
+  109  docker network connect netone web02
+  110  docker container inspect web02 | grep -i ipaddress
+  111  docker network disconnect bridge web01
+  112  docker network disconnect bridge web02
+  113  docker container inspect web01 | grep -i ipaddress
+  114  docker container inspect web02 | grep -i ipaddress
+  115  docker network create nettwo
+  116  docker container run -d --name web03 --network nettwo  nginx:alpine 
+  117  #docker container exec web0 ping 172.17.0.26
+  118  docker container inspect web01 | grep -i ipaddress
+  119  docker container inspect web02 | grep -i ipaddress
+  120  docker container inspect web03 | grep -i ipaddress
+  121  docker container exec web01 ping 172.18.0.3
+  122  docker container exec web01 ping web02
+  123  docker network connect nettwo web02
+  124  docker container exec web02 ping web03
+  125  docker container exec web01 ping web03
+  126  docker container run -d --name web04 --network nettwo --ip 172.19.0.50  nginx:alpine 
+  127  docker container rm -f web04
+  128  docker network create myown --subnet 172.50.0.0/16 --gateway 172.50.0.1
+  129  docker container run -d --name web04 --network myown --ip 172.50.0.20  nginx:alpine 
+  130  docker container inspect web04 | grep -i ipaddress
+  131  history | more
+  132  docker network connect myown web02 --ip 172.19.0.52
+  133  docker network connect myown web02 --ip 172.50.0.22
+  134  docker container inspect web02 | grep -i ipaddress
+  135  docker container stop web02
+  136  docker container start web02
+  137  docker container inspect web02 | grep -i ipaddress
+  138  history > day1.hist
