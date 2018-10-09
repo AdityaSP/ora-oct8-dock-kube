@@ -1,0 +1,500 @@
+   12  docker container inspect d696803b5db0
+   13  ping
+   14  ping 172.17.0.25
+   15  curl --version
+   16  curl 172.17.0.25:80
+   17  docker container run -d -p 9999:80 nginx
+   18  docker container ls | grep -v k8s
+   19  docker container stop wizardly_lewin
+   20  docker container ls | grep -v k8s
+   21  docker container ls -a| grep -v k8s
+   22  docker container start wizardly_lewin
+   23  docker container ls | grep -v k8s
+   24  docker container rm wizardly_lewin
+   25  docker container rm -f wizardly_lewin
+   26  docker container ls | grep -v k8s
+   27  docker container exec -it suspicious_sammet sh
+   28  docker container ls | grep -v k8s
+   29  docker container stop suspicious_sammet
+   30  docker container start suspicious_sammet
+   31  docker container run -d alpine
+   32  docker container ls | grep -v k8s
+   33  docker container ls -a | grep -v k8s 
+   34  #docker container exec -it suspicious_sammet sh
+   35  docker container run -it alpine sh
+   36  docker container run -it alpine sh
+   37  history
+   38  docker container ls
+   39  docker container run -it alpine bash
+   40  docker container run -it alpine sh
+   41  docker container ls -a | grep -v k8s
+   42  docker commit --help
+   43  docker commit 78ea91e72168 alap
+   44  docker container run -d -p 9998:80 --name web01 alap
+   45  docker container ls | grep -v k8s
+   46  docker container ls -a | grep -v k8s
+   47  docker container rm web01
+   48  docker container prune
+   49  docker container run -d -p 9998:80 --name web01 alap httpd -D FOREGROUND
+   50  docker container ls | grep -v k8s
+   51  docker image ls
+   52  docker image ls
+   53  docker image history alpine
+   54  docker image history alap
+   55  docker image ls alap
+   56  docker image ls alpine
+   57  docker image ls nginx
+   58  docker image pull alpine:3.2
+   59  docker image ls alpine
+   60  docker image rm alpine:3.2
+   61  docker image ls alap
+   62  docker image push alap
+   63  docker logout
+   64  docker image push alap
+   65  docker login
+   66  docker image push alap
+   67  docker image tag
+   68  docker image tag alap:latest adityaprabhakara/alap:latest
+   69  docker image ls alap
+   70  docker image ls adityaprabhakara/alap
+   71  docker image push adityaprabhakara/alap:latest
+   72  docker image tag  adityaprabhakara/alap:latest adityaprabhakara/alap:1
+   73  docker image push adityaprabhakara/alap:1
+   74  docker image ls adityaprabhakara/alap
+   75  docker image history nginx
+   76  docker image inspect nginx
+   77  clear
+   78  docker container ls | grep -v k8s
+   79  docker -q
+   80  docker -p
+   81  docker container -q
+   82  docker container -p
+   83* 
+   84  docker container ls | grep -v k8s
+   85  docker container rm -rf web01 c100e
+   86  docker container rm -f web01 c100e
+   87  docker container prune
+   88  docker container run -d --name web01  nginx:alpine 
+   89  docker container run -d --name web02  nginx:alpine 
+   90  docker container inspect web01 | grep -i ipaddress
+   91  docker container inspect web02 | grep -i ipaddress
+   92  docker container exec web01 ping web02
+   93  docker container exec web01 ping 172.17.0.26
+   94  docker container inspect web01
+   95  ifconfig
+   96  docker container inspect web02 | grep -i ipaddress
+   97  docker container inspect web01 | grep -i ipaddress
+   98  docker network ls
+   99  docker network rm -f 8fca2f5aedfe bd905be7d6b9
+  100  docker network rm  8fca2f5aedfe bd905be7d6b9
+  101  docker network ls
+  102  docker network ls
+  103  docker network inspect bridge
+  104  docker network create netone
+  105  docker network ls
+  106  docker network inspect netone 
+  107  docker network connect netone web01
+  108  docker container inspect web01 | grep -i ipaddress
+  109  docker network connect netone web02
+  110  docker container inspect web02 | grep -i ipaddress
+  111  docker network disconnect bridge web01
+  112  docker network disconnect bridge web02
+  113  docker container inspect web01 | grep -i ipaddress
+  114  docker container inspect web02 | grep -i ipaddress
+  115  docker network create nettwo
+  116  docker container run -d --name web03 --network nettwo  nginx:alpine 
+  117  #docker container exec web0 ping 172.17.0.26
+  118  docker container inspect web01 | grep -i ipaddress
+  119  docker container inspect web02 | grep -i ipaddress
+  120  docker container inspect web03 | grep -i ipaddress
+  121  docker container exec web01 ping 172.18.0.3
+  122  docker container exec web01 ping web02
+  123  docker network connect nettwo web02
+  124  docker container exec web02 ping web03
+  125  docker container exec web01 ping web03
+  126  docker container run -d --name web04 --network nettwo --ip 172.19.0.50  nginx:alpine 
+  127  docker container rm -f web04
+  128  docker network create myown --subnet 172.50.0.0/16 --gateway 172.50.0.1
+  129  docker container run -d --name web04 --network myown --ip 172.50.0.20  nginx:alpine 
+  130  docker container inspect web04 | grep -i ipaddress
+  131  history | more
+  132  docker network connect myown web02 --ip 172.19.0.52
+  133  docker network connect myown web02 --ip 172.50.0.22
+  134  docker container inspect web02 | grep -i ipaddress
+  135  docker container stop web02
+  136  docker container start web02
+  137  docker container inspect web02 | grep -i ipaddress
+  138  history > day1.hist
+  139  clear
+  140  mkdir alap
+  141  cd alap/
+  142  ls
+  143  vi Dockerfile
+  144  cat Dockerfile 
+  145  docker build -t alap:2.0 -f Dockerfile .
+  146  docker image ls alap
+  147  #docker container exec web02 ping web03
+  148  export PS1='\n$PWD>'
+  149  docker image tag alap:latest alap:1.0
+  150  docker image tag alap:2.0 alap:latest
+  151  docker image ls alap
+  152  docker image history alap
+  153  docker image history alap:1.0
+  154  vi Dockerfile 
+  155  i#docker build -t alap:2.0 -f Dockerfile .
+  156  cat Dockerfile 
+  157  docker build -t alap:3.0 -t alap:latest -f Dockerfile .
+  158  docker image history alap:3.0
+  159  #docker build -t alap:3.0 -t alap:latest -f Dockerfile .
+  160  ps -ef | grep -i docker
+  161  ps -ef | grep -i docker | grep -v shim
+  162  ps -ef | grep -i docker | grep -v containered
+  163  service docker status
+  164  cd /
+  165  cd -
+  166  ls
+  167  docker build -t alap:3.0 -t alap:latest -f Dockerfile .
+  168* 
+  169  docker build -t alap:3.0 -t alap:latest -f alap.3.0 .
+  170* 
+  171  docker container ls | grep -v k8s
+  172  #docker container run -d --name web04 --network myown --ip 172.50.0.20  nginx:alpine 
+  173  docker container run -d --name justping -p 9996:80 alap ping google.com
+  174  docker container ls | grep -v k8s
+  175  docker container exec justping httpd -D FOREGROUND
+  176  docker container ls | grep -v k8s
+  177  docker container exec -it justping sh
+  178  docker container ls | grep -v k8s
+  179  ls
+  180  clear
+  181  ls
+  182  docker image ls alap
+  183  docker container ls | grep -v k8s
+  184  docker container exec -it fromalap sh
+  185  ls
+  186  cd ..
+  187  ls
+  188  mkdir code
+  189  cd code/
+  190  vi mypage.html
+  191  cat mypage.html 
+  192  git --version
+  193  vi Dockerfile
+  194  ls
+  195  #docker container build -t alapcode:1.0 -t alapcode:latest .
+  196  cat Dockerfile 
+  197  docker container build -t alapcode:1.0 -t alapcode:latest .
+  198  docker build -t alapcode:1.0 -t alapcode:latest .
+  199  docker container run -d --name withcode -p 9995:80 alapcode
+  200  ls
+  201  vi mypage.html 
+  202  cat mypage.html 
+  203  docker build -t alapcode:2.0 -t alapcode:latest .
+  204  docker container run -d --name withcode2 -p 9994:80 alapcode
+  205  docker container run -d --name withcode2 -p 9994:80 alapcode
+  206  docker build -t alapcode:2.0 -t alapcode:latest .
+  207  cat >> mypage.html 
+  208  docker build -t alapcode:2.0 -t alapcode:latest .
+  209  vi Dockerfile 
+  210  docker build -t alapcode:2.0 -t alapcode:latest .
+  211  docker build --help
+  212  docker build -t alapcode:2.0 -t alapcode:latest --no-cache .
+  213  docker container ls | grep -v k8s
+  214  docker container ls | grep -v k8s | cut -f 1 -d " "
+  215  docker container rm -f `docker container ls | grep -v k8s | cut -f 1 -d " "`
+  216  docker container ls | grep -v k8s
+  217  docker container run -d --name withcode2 -p 9994:80 alapcode
+  218  docker container exec -it alapcode sh
+  219  docker container exec -it withcode2 sh
+  220  cd ..
+  221  cd alap
+  222  ls
+  223  cp alap.3.0 alap.4.0
+  224  vi alap.4.0 
+  225  cat alap.4.0 
+  226  docker build -t alap:4.0 -t alap:latest -f alap.4.0 .
+  227  docker container run -d --name alap -p 9993:8081 alap
+  228  cat alap.4.0 
+  229  docker container exec alap cat /etc/apache2/httpd.conf > httpd.conf
+  230  ls
+  231  vi alap.4.0 
+  232  docker container run --rm alpine env
+  233  docker container run --rm -e MYVAR=something alpine env
+  234  vi alap.4.0 
+  235  docker build -t alap:4.0 -t alap:latest -f alap.4.0 .
+  236  docker container run -d --name alap1 -p 9992:80 alap
+  237  docker container run -d -e APACHE_PORT=8888 --name alap2 -p 9991:8888 alap
+  238  docker inspect alap2 | grep -i ipaddress
+  239  curl 172.17.0.28:8888
+  240  clear
+  241  ls
+  242  vi alap.4.0 
+  243  cd ..
+  244  ls
+  245  mkdir pinger
+  246  cd pinger
+  247  ls
+  248  vi Dockerfile
+  249  docker build -t pinger .
+  250  docker build -t pinger --no-cache .
+  251  docker container run --rm pinger
+  252  docker container run --rm pinger ping -c 4 yahoo.com
+  253  docker image inspect pinger
+  254  vi Dockerfile 
+  255  docker image inspect nginx
+  256  docker image inspect pinger
+  257  vi Dockerfile 
+  258  docker build -t pinger --no-cache .
+  259  docker image inspect pinger
+  260  docker container run --rm pinger
+  261  vi Dockerfile 
+  262  docker container run --rm pinger
+  263  docker container run --rm pinger env
+  264  vi Dockerfile 
+  265  docker build -t pinger --no-cache .
+  266  docker container run --rm pinger env
+  267  vi Dockerfile
+  268  docker container run --rm pinger
+  269  docker container run --rm alpine which ping
+  270  vi Dockerfile
+  271  docker build -t pinger --no-cache .
+  272  docker container run --rm pinger
+  273  docker container run --rm pinger yahoo.com
+  274  vi Dockerfile 
+  275  cd ..
+  276  la
+  277  cd alap/
+  278  ls
+  279  vi alap.4.0 
+  280  cp alap.4.0 alap5.0
+  281  vi alap5.0 
+  282  vi dockerentrypoint.sh
+  283  vi alap5.0 
+  284  vi dockerentrypoint.sh 
+  285  cat dockerentrypoint.sh 
+  286  cat alap5.0 
+  287  vi alap5.0 
+  288  vi alap4.0
+  289  vi alap.4.0 
+  290  vi alap5.0 
+  291  docker image build -t alap:5.0 -t alap:latest alap5.0 
+  292  docker image build -t alap:5.0 -t alap:latest alap5.0 ,
+  293  docker image build -t alap:5.0 -t alap:latest alap5.0 .
+  294  docker build -t alap:5.0 -t alap:latest alap5.0 .
+  295  docker build -t alap:5.0 -t alap:latest -f alap5.0 .
+  296  docker container run -d -p 9990:80 alap
+  297  docker container ls | grep -v k8s
+  298  docker container ls -a | grep -v k8s
+  299  docker container logs infallible_murdock
+  300  docker build -t alap:5.0 -t alap:latest -f alap5.0 .
+  301  docker container run -it --entrypoint /bin/sh alap sh
+  302  vi alap5.0 
+  303  docker build -t alap:5.0 -t alap:latest -f alap5.0 .
+  304  docker container run -d -p 9989:80 alap
+  305  docker container ls | grep -v k8s
+  306  docker container ls -a| grep -v k8s
+  307  docker container logs condescending_kare
+  308  vi alap5.0
+  309  ls dockerentrypoint.sh
+  310  docker container run -it --entrypoint /bin/sh alap sh
+  311  vi dockerentrypoint.sh
+  312  docker container run -it --entrypoint "" alap sh
+  313  vi alap5.0 
+  314  docker container run -it --entrypoint "" alap sh
+  315  vi dockerentrypoint.sh 
+  316  docker build -t alap:5.0 -t alap:latest -f alap5.0 .
+  317  docker container run -d -p 9989:80 alap
+  318  docker container ls -a| grep -v k8s
+  319  docker container logs a2d0a870a48e
+  320  docker container run -it --entrypoint /bin/sh alap sh
+  321  docker container run -it --entrypoint "" alap sh
+  322  docker container ls | grep -v k8s
+  323  vi alap5.0 
+  324  docker build -t alap:5.0 -t alap:latest -f alap5.0 .
+  325  vi alap5.0 
+  326  docker container run -d -p 9989:80 alap
+  327  docker container ls -a | grep -v k8s
+  328  docker container run -it --entrypoint "" alap sh
+  329  vi alap5.0 
+  330  docker container run -d -p 9989:80 alap
+  331  docker build -t alap:5.0 -t alap:latest -f alap5.0 --no-cache .
+  332  docker container run -d -p 9989:80 alap
+  333  docker container ls -a | grep -v k8s
+  334  docker logs 5aaddc8a9538
+  335  docker container logs 5aaddc8a9538
+  336  vi alap5.0 
+  337  vi dockerentrypoint.sh 
+  338  docker build -t alap:5.0 -t alap:latest -f alap5.0 --no-cache .
+  339  docker container run -d -p 9989:80 alap
+  340  docker container ls -a | grep -v k8s
+  341  docker logs blissful_dijkstra
+  342  vi alap5.0 
+  343  docker build -t alap:5.0 -t alap:latest -f alap5.0  .
+  344  docker container run -d -p 9989:80 alap
+  345  docker container ls -a | grep -v k8s
+  346  docker container logs cocky_hypatia
+  347  vi alap5.0 
+  348  vi dockerentrypoint.sh 
+  349  docker build -t alap:5.0 -t alap:latest -f alap5.0  .
+  350  docker container run -d -p 9989:80 alap
+  351  docker container ls -a | grep -v k8s
+  352  docker container logs quizzical_wescoff
+  353  docker container run -it --entrypoint "" alap which httpd
+  354  vi alap5.0 
+  355  docker build -t alap:5.0 -t alap:latest -f alap5.0  .
+  356  docker container run -d -p 9989:80 alap
+  357  docker container ls -a | grep -v k8s
+  358  docker container logs quizzical_yalow
+  359  docker container run -it --entrypoint "" alap /usr/sbin/httpd -D FOREGROUND
+  360  vi alap5.0 
+  361  docker build -t alap:5.0 -t alap:latest -f alap5.0  .
+  362  docker container run -d -p 9989:80 alap
+  363  docker container ls -a | grep -v k8s
+  364  docker container logs objective_kowalevski
+  365  cat dockerentrypoint.sh 
+  366  cat alap5.0 
+  367  vi alap5.0 
+  368  docker build -t alap:5.0 -t alap:latest -f alap5.0  .
+  369  docker container run -d -p 9988:80 alap
+  370  docker container ls -a | grep -v k8s
+  371  cat alap5.0 
+  372  cat dockerentrypoint.sh 
+  373  #docker container run -d -p 9989:80 alap
+  374  docker image ls mysql
+  375  clear
+  376  cd /var/lib/docker
+  377  ls
+  378  cd containers/
+  379  ls
+  380  cd 01b800e7feec6b7314489b33eb48833a68749d9160992c114c1021e82ed6b2bb
+  381  ls
+  382  cd ..
+  383  clear
+  384  ls
+  385  ls
+  386  cd ..
+  387  ls
+  388  cd image/
+  389  ls
+  390  cd overlay2/
+  391  ls
+  392  cd layerdb/
+  393  ls
+  394  cd sha256/
+  395  ls
+  396  cd
+  397  id
+  398  cd /home/docker/
+  399  ls
+  400  docker container ls | grep -v k8s
+  401  docker container exec -it silly_torvalds sh
+  402  ps -ef | grep httpd
+  403  ps -ef | grep 29188
+  404  ps -ef | grep 29166
+  405  docker image ls mysql
+  406  docker container run --name mydb -d mysql:5.7
+  407  docker container ls | grep -v k8s
+  408  docker container ls -a| grep -v k8s
+  409  docker container logs mydb
+  410  docker container prune
+  411  docker container run --name mydb -d -e MYSQL_ROOT_PASSWORD=root mysql:5.7
+  412  docker container ls -a| grep -v k8s
+  413  docker container exec -it mydb bash
+  414  docker container inspect mydb
+  415  cd /var/lib/docker/volumes/5396f01b5e88442f508dfa635925d93e6ca82bd2d2af301c9d4bf1c7177c5c0e/_data
+  416  ls
+  417  cd 
+  418  cd /home/docker
+  419  docker container rm -f mydb
+  420  cd cd /var/lib/docker/volumes/5396f01b5e88442f508dfa635925d93e6ca82bd2d2af301c9d4bf1c7177c5c0e/_data
+  421  cd /var/lib/docker/volumes/5396f01b5e88442f508dfa635925d93e6ca82bd2d2af301c9d4bf1c7177c5c0e/_data
+  422  ls
+  423  cd -
+  424  docker container run --name mydb -d -e MYSQL_ROOT_PASSWORD=root mysql:5.7
+  425  docker container inspect mydb
+  426  docker volume ls
+  427  docker volume inspect 5396f01b5e88442f508dfa635925d93e6ca82bd2d2af301c9d4bf1c7177c5c0e
+  428  docker container run -d -p 9987:80 -v /var/log/apache2  alap
+  429  docker container inspect 9d87ae457d3c0b0b341c471fb558f3516a40d5cc034d1b5e1a60ce4df7fca721
+  430  cd "/var/lib/docker/volumes/0c5594aeb35d6a56c565c2077983d98ed09ecae8e53ac49ee39468c376bcd109/_data"
+  431  ls
+  432  cd -
+  433  docker container run --name mydb1 -v mydata_vol:/var/lib/mysql -d -e MYSQL_ROOT_PASSWORD=root mysql:5.7
+  434  docker container inspect mydb1
+  435  docker container exec -it mydb1 mysql -uroot -proot
+  436  docker container rm -rf mydb1
+  437  docker container rm -f mydb1
+  438  docker volume ls
+  439  docker volume ls
+  440  docker volume inspect mydata_vol
+  441  cd "/var/lib/docker/volumes/mydata_vol/_data"
+  442  ls
+  443  cd -
+  444  docker container run --name mydb1 -v mydata_vol:/var/lib/mysql -d -e MYSQL_ROOT_PASSWORD=root mysql:5.7
+  445  docker container run --name mydb1 -v mydata_vol:/var/lib/mysql -d -e MYSQL_ROOT_PASSWORD=root mysql:5.7
+  446  docker container exec -it mydb1 mysql -uroot -proot
+  447  history | tail -n 20
+  448  docker container run --name mydb2 -v /tmp/datadir:/var/lib/mysql -d -e MYSQL_ROOT_PASSWORD=root mysql:5.7
+  449  cd /tmp/datadir
+  450  ls
+  451  ls -ltra
+  452  date
+  453  docker container run --name mydb2 -v /tmp/datadir:/var/lib/mysql -d -e MYSQL_ROOT_PASSWORD=root mysql:5.7
+  454  ls
+  455  docker container inspect mydb2
+  456  docker container run -d -p 9986:80 -v /tmp/webfiles:/var/www/localhost/htdocs alap
+  457  docker container rm -f mydb
+  458  docker container rm -f mydb1
+  459  docker container rm -f mydb2
+  460  docker volume prune
+  461  cd /tmp/webfiles/
+  462  ls
+  463  #docker container run -d -p 9986:80 -v /tmp/webfiles:/var/www/localhost/htdocs alap
+  464  cat index.html
+  465  cat > index.html
+  466  git clone https://github.com/AdityaSP/puppetcode
+  467  cd puppetcode/
+  468  git pull
+  469  cd
+  470  cd /home/docker/
+  471  ls
+  472  cd alap
+  473  ls
+  474  vi alap5.0 
+  475  docker volume ls
+  476  #docker container logs infallible_murdock
+  477  #docker container run -d -p 9987:80 -v a_l:/var/log/apache2  alap
+  478  /var/lib/docker/volumes/
+  479  cd /var/lib/docker/volumes/
+  480  docker container run --help
+  481  ##docker container run -d -p 9987:80 -p2222:22 -v a_l:/var/log/apache2  alap
+  482  clear
+  483  ls
+  484  docker container run alpine ping google.com
+  485  docker container ls | grep -v k8s
+  486  docker container logs e5abe67ef75c
+  487  docker container exec e5abe67ef75c cat /var/log/apache2/access.log
+  488  docker container exec e5abe67ef75c cat /var/log/apache2/error.log
+  489  docker container logs e5abe67ef75c
+  490  docker container run -p 9980:80 nginx
+  491  docker image history nginx
+  492  cd /home/docker
+  493  cd alap/
+  494  ls
+  495  vi alap6.0
+  496  cp alap5.0 alap6.0
+  497  vi alap6.0 
+  498  docker build -t alap:6.0 -t alap:latest -f alap6.0  .
+  499  vi alap6.0 
+  500  docker build -t alap:6.0 -t alap:latest -f alap6.0  .
+  501  docker container run -d  alap
+  502  docker container ls -a | grep -v k8s
+  503  docker container logs c7b1067a798f
+  504  vi alap6.0 
+  505  docker image inspect nginx
+  506  docker image inspect mysql:5.7
+  507  vi alap6.0 
+  508  docker image inspect nginx
+  509  cd ..
+  510  ls
+  511  history > day2.hist
