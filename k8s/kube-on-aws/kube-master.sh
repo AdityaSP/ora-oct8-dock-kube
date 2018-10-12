@@ -25,6 +25,7 @@ apt-get install -y kubelet kubeadm kubectl
 
 echo "deploying kubernetes (with calico)..."
 kubeadm init --pod-network-cidr=192.168.0.0/16 # add --apiserver-advertise-address="ip" if you want to use a different IP address than the main server IP
+#kubeadm init --pod-network-cidr=192.168.0.0/16 --apiserver-advertise-address=192.168.33.70
 export KUBECONFIG=/etc/kubernetes/admin.conf
 
 kubectl apply -f https://docs.projectcalico.org/v3.1/getting-started/kubernetes/installation/hosted/canal/rbac.yaml
